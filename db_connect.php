@@ -1,8 +1,8 @@
 <?php
-$host = 'sql108.infinityfree.com';
-$db   = 'if0_37306669_msg';
-$user = 'if0_37306669';
-$pass = '083tJZtMC0D2ma';
+$host = 'localhost';
+$db   = 'zero';
+$user = 'zero';
+$pass = '123456';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";

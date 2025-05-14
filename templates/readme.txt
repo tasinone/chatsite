@@ -1,0 +1,1 @@
+These are old templates. To use any of these just remove the number from "index" and then replace this index.php file with the one in your root directory.

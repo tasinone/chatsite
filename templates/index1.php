@@ -7,11 +7,167 @@
     <!-- Skeleton CSS Framework -->
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/skeleton.css">
-	<link rel="stylesheet" href="css/custom.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
+<style>
+	/* Minimal custom styling to supplement Skeleton */
+	html, body {
+		height: 100%;
+		margin: 0;
+	}
+	body {
+		display: flex;
+		flex-direction: column;
+	}
+	.container {
+		width: 100%;
+		max-width: 850px;
+		margin: 0 auto;
+		padding: 0 3px;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+	#chat-container {
+		border: 1px solid #E1E1E1;
+		border-radius: 4px;
+		padding: 10px;
+		flex: 1;
+		overflow-y: auto;
+		margin-bottom: 10px;
+		margin-top: 10px;
+	}
+	.message {
+		display: flex;
+		margin-bottom: 10px;
+		padding: 10px;
+		background-color: #F5F5F5;
+		border-radius: 4px;
+	}
+	.message-content {
+		flex-grow: 1;
+		margin-right: 10px;
+	}
+	.message-text {
+		white-space: pre-wrap;
+		word-break: break-word;
+	}
+	.message-text.truncated {
+		max-height: 4.8em;
+		overflow: hidden;
+	}
+	.see-more {
+		color: #1EAEDB;
+		cursor: pointer;
+	}
+	.message-actions {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.message-actions button {
+		background: none;
+		border: none;
+		padding: 5px;
+		cursor: pointer;
+		margin-bottom: 5px;
+	}
+	.message-actions button img {
+		width: 16px;
+		height: 16px;
+	}
+	.input-area {
+		position: sticky;
+		bottom: 0px;
+		background-color: #fff;
+		padding-bottom: 10px;
+	}
+	.input-container {
+		display: flex;
+		margin-bottom: 10px;
+	}
+	#message-input {
+		flex-grow: 1;
+		height: 38px;
+		padding: 6px 10px;
+		border: 1px solid #D1D1D1;
+		border-radius: 4px 0 0 4px;
+		resize: vertical;
+		min-height: 38px;
+	}
+	#attachment-input {
+		display: none;
+	}
+	#attachment-label {
+		background-color: #F1F1F1;
+		padding: 0 10px;
+		cursor: pointer;
+		border: 1px solid #D1D1D1;
+		border-left: none;
+		display: flex;
+		align-items: center;
+		height: 38px;
+	}
+	#send-button {
+		border-radius: 0 4px 4px 0;
+		margin: 0;
+	}
+	#status-message {
+		color: #D9534F;
+		margin-top: 10px;
+	}
+	.attachment-preview {
+		margin-top: 5px;
+		font-size: 0.9em;
+		color: #777;
+	}
+	.attachments a {
+		display: inline-block;
+		max-width: 100%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.edit-popup {
+		display: none;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background-color: white;
+		padding: 20px;
+		border-radius: 4px;
+		box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+		z-index: 1000;
+		width: 90%;
+		max-width: 500px;
+	}
+	.edit-popup textarea {
+		width: 100%;
+		min-height: 100px;
+		margin-bottom: 10px;
+		padding: 5px;
+	}
+	.edit-popup-buttons {
+		text-align: right;
+	}
+	.edit-popup-buttons button {
+		margin-left: 10px;
+	}
+	.overlay {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0,0,0,0.5);
+		z-index: 999;
+	}
+</style>
 <body>
     <div class="container">
         <div id="chat-container"></div>
