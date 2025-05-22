@@ -144,8 +144,10 @@
 
             $(document).on('click', '.edit-button', function() {
                 var messageId = $(this).data('id');
-                var currentMessage = $(this).closest('.message').find('.message-text').html();
-                currentMessage = currentMessage.replace(/<br>/g, '\n');
+                var messageElement = $(this).closest('.message').find('.message-text');
+                var tempDiv = $('<div>').html(messageElement.html());
+                tempDiv.find('br').replaceWith('\n');
+                var currentMessage = tempDiv.text();
                 $('#edit-message-input').val(currentMessage);
                 $('.edit-popup, .overlay').show();
                 currentEditId = messageId;
